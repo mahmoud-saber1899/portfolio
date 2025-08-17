@@ -217,7 +217,9 @@
         .portfolio-img-container .card-img-top {
             aspect-ratio: 16 / 10;
             object-fit: cover;
-            transition: transform 0.4s ease;
+            /* Combine transitions for hover and lazy-load effect */
+            transition: transform 0.4s ease, filter 0.7s ease-in-out;
+            background-color: #2a2828; /* Placeholder background for loading image */
         }
         .portfolio-card:hover .card-img-top {
             transform: scale(1.05);
@@ -228,6 +230,15 @@
         .portfolio-card .card-title {
             color: var(--secondary-color);
             font-weight: 600;
+        }
+
+        /* Lazy Loading Image Effect */
+        .card-img-top.lazy-load {
+            filter: blur(5px);
+        }
+
+        .card-img-top.lazy-load.loaded {
+            filter: blur(0);
         }
 
         /* Work Process Section */

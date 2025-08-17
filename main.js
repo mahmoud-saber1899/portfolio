@@ -117,4 +117,36 @@
                 "retina_detect": true
             });
         }
+
+        // 6. Lazy Loading for Portfolio Images with Blur Effect
+        const lazyImages = document.querySelectorAll('.lazy-load');
+
+        if ("IntersectionObserver" in window) {
+            const lazyImageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const lazyImage = entry.target;
+                        lazyImage.src = lazyImage.dataset.src;
+                        
+                        lazyImage.addEventListener('load', () => {
+                            lazyImage.classList.add('loaded');
+                        }, { once: true }); // Ensure listener is removed after firing
+
+                        observer.unobserve(lazyImage);
+                    }
+                });
+            });
+
+            lazyImages.forEach(lazyImage => {
+                lazyImageObserver.observe(lazyImage);
+            });
+        } else {
+            // Fallback for very old browsers that don't support IntersectionObserver
+            lazyImages.forEach(lazyImage => {
+                lazyImage.src = lazyImage.dataset.src;
+                lazyImage.addEventListener('load', () => {
+                    lazyImage.classList.add('loaded');
+                });
+            });
+        }
     });

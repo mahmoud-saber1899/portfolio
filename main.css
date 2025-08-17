@@ -1,0 +1,372 @@
+
+        /* CSS Variables - Your Color Palette */
+        :root {
+            --primary-bg: #131111;
+            --secondary-color: #f7944a;
+            --font-color: #f4f4f4;
+            --card-bg: #1d1b1b;
+            --border-color: #333;
+        }
+
+        /* General Body Styling */
+        body {
+            background-color: var(--primary-bg);
+            color: var(--font-color);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Helper Classes */
+        .section-padding {
+            padding: 100px 0;
+        }
+        .text-secondary-color {
+            color: var(--secondary-color) !important;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(19, 17, 17, 0.85);
+            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: var(--font-color);
+        }
+        .navbar-brand span {
+            color: var(--secondary-color);
+        }
+        .navbar-nav .nav-link {
+            color: var(--font-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            margin: 0 10px;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--secondary-color);
+        }
+        .navbar-toggler {
+            border-color: rgba(247, 148, 74, 0.5);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28247, 148, 74, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+
+        /* Hero Section with Parallax Effect */
+        #hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* PARALLAX EFFECT STYLES START */
+            background-image: linear-gradient(rgba(19, 17, 17, 0.9), rgba(19, 17, 17, 0.9)), url(https://images.unsplash.com/photo-1603366615917-e213e4498e0a?q=80&w=2070);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed; 
+            /* PARALLAX EFFECT STYLES END */
+            overflow: hidden; /* Contain the particles */
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Sit behind the content */
+        }
+
+        #hero .container {
+            position: relative;
+            z-index: 1; /* Ensure content is above particles */
+        }
+
+        .hero-text {
+            text-align: left;
+        }
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+            font-weight: 700;
+        }
+        .hero-text h2 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 400;
+            margin-bottom: 2rem;
+            min-height: 2.5rem; /* Prevents layout shift while typing */
+        }
+        .hero-text .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 2rem;
+            background-color: var(--secondary-color);
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        .hero-img-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero-img {
+            max-width: 350px;
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            border: 5px solid var(--secondary-color);
+            box-shadow: 0 0 40px rgba(247, 148, 74, 0.3);
+            object-fit: cover;
+            aspect-ratio: 1/1;
+        }
+
+        @media (max-width: 991.98px) {
+            .hero-text {
+                text-align: center;
+                margin-bottom: 40px;
+            }
+             #hero {
+                background-attachment: scroll; /* Disables fixed attachment on mobile for better performance */
+            }
+        }
+        .btn-main {
+            background-color: var(--secondary-color);
+            color: var(--primary-bg);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+            display: inline-block;
+        }
+        .btn-main:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+
+        /* General Section Styling */
+        .section-title {
+            margin-bottom: 60px;
+            text-align: center;
+        }
+        .section-title h2 {
+            font-weight: 700;
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        /* Experience Section */
+        .skill-item {
+            margin-bottom: 25px;
+        }
+        .skill-item h5 {
+            font-weight: 600;
+        }
+        .progress {
+            height: 8px;
+            background-color: var(--card-bg);
+            border-radius: 5px;
+            overflow: visible; /* Allows the percentage text to be outside */
+        }
+        .progress-bar {
+            background-color: var(--secondary-color);
+            position: relative;
+        }
+        .progress-bar span {
+            position: absolute;
+            right: 0;
+            top: -25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--font-color);
+        }
+
+        /* Portfolio Section */
+        .portfolio-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+        }
+        .portfolio-img-container {
+            position: relative;
+        }
+        .portfolio-img-container .card-img-top {
+            aspect-ratio: 16 / 10;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .portfolio-card:hover .card-img-top {
+            transform: scale(1.05);
+        }
+        .portfolio-card .card-body {
+            padding: 25px;
+        }
+        .portfolio-card .card-title {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Work Process Section */
+        .process-step {
+            background-color: var(--card-bg);
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.4s ease, border-color 0.4s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .process-step:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary-color);
+        }
+        .process-step .step-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+        .process-step h4 {
+            font-weight: 600;
+            font-size: 1.25rem;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-cta-wrapper {
+            position: relative;
+            background-image: linear-gradient(rgba(19, 17, 17, 0.85), rgba(19, 17, 17, 0.95)), url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=2070');
+            background-position: center;
+            background-size: cover;
+            padding: 80px 40px;
+            border-radius: 20px;
+            text-align: center;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .contact-info-box {
+            background-color: rgba(29, 27, 27, 0.6);
+            backdrop-filter: blur(8px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .contact-info-box:hover {
+            border-color: var(--secondary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .contact-info-box .icon {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .contact-info-box h5 {
+            font-weight: 600;
+            color: var(--font-color);
+            margin-bottom: 10px;
+        }
+
+        .contact-info-box a {
+            color: #ccc;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+            word-break: break-all;
+        }
+
+        .contact-info-box a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-color);
+            color: var(--primary-bg);
+            border-radius: 50%;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            text-decoration: none;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 4px 4px 15px rgba(0,0,0,0.4);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a1a1a;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        .social-icons a {
+            color: var(--font-color);
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            display: inline-block;
+        }
+        .social-icons a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px);
+        }
+        .footer-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        /* Animation on Scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
